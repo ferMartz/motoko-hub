@@ -1,0 +1,9 @@
+{
+    "canisters": {
+        "hub": {
+            "type": "motoko",
+            "main": "src/main.mo"
+        }
+    },
+    "dfx": "0.9.0"
+}
