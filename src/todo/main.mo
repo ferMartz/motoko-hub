@@ -32,7 +32,7 @@ actor Assistant {
         return result;
     };
 
-    // Create a trie key from a superhero identifier.
+    // Create a trie key from a todo identifier.
     private func key(x : TodoId) : Trie.Key<TodoId> {
         return { hash = x; key = x };
     };
