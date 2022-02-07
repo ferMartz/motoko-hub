@@ -2,7 +2,15 @@
     "canisters": {
         "hub": {
             "type": "motoko",
-            "main": "src/main.mo"
+            "main": "src/hub/main.mo"
+        },
+        "whoami": {
+            "type": "motoko",
+            "main": "src/whoami/main.mo"
+        },
+        "todo": {
+            "type": "motoko",
+            "main": "src/todo/main.mo"
         }
     },
     "dfx": "0.9.0"

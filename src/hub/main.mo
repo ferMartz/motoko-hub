@@ -1,5 +1,6 @@
 import Int "mo:base/Int";
 import Utils "./utils";
+import Principal "mo:base/Principal";
 
 actor {
     // Immutable variable - you can't reassign the value
@@ -10,8 +11,19 @@ actor {
     var y : Int = 0;
 
     // Reassign value y := 1;
+    
+    // Stable variable maintains the state
+    stable var counter : Int = 0;
 
-    var counter : Int = 0;
+    // Function simple hello world
+    public query func hello () : async Text {
+        return "Hello world from motoko!";
+    };
+
+    // Function simple greet
+    public query func greet (txt : Text) : async Text {
+        return "Hello there " # txt # "!";
+    };
     
     // Function to add a number
     public func add (n : Int) : async Int {
@@ -26,7 +38,7 @@ actor {
     };
 
     // Function to multiply from - using Int base library
-    public func multiplication (n : Int) : async Int {
+    public func multiply (n : Int) : async Int {
         counter := Int.mul(counter, n);
         return counter;
 
@@ -41,6 +53,16 @@ actor {
     public func toText(n : Int) : async Text {
         let t = Utils.intToText(n);
         return t;
+    };
+
+    public shared (msg) func whoamiToText() : async Text {
+        let caller = msg.caller;
+        let identity = Principal.toText(caller);
+        return "Mi identity is : " # identity # "!";
+    };
+
+    public shared (message) func whoami() : async Principal {
+        return message.caller;
     };
 
 }
